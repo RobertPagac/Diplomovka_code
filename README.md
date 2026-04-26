@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Seamless Texture Generator
 
-# Run and deploy your AI Studio app
+Tento návod slúži na sprevádzkovanie lokálneho generatívneho modelu FLUX.1. Vyberte si verziu podľa vašej konfigurácie RAM.
 
-This contains everything you need to run your app locally.
+### 1. Príprava prostredia
+- Nainštalujte [Node.js](https://nodejs.org/) (v18+)
+- Nainštalujte [Python](https://www.python.org/) (3.10+)
+1. Stiahnite si všetky súbory V ZIP formáte z tejto stánky (Zelené tlačítko Code hore) a rozbalte si ho niekde v počítači.
+2. Na stránke https://huggingface.co/black-forest-labs/FLUX.1-schnell sa prihláste.
+3. Uvidíte žltý box s podmienkami. Kliknite na "Agree and access repository".
+4. Na stránke https://huggingface.co/settings/tokens sa znovu prihláste kliknite na Create new token, pomenujte ho, vytvorte a skopírujte.
 
-View your app in AI Studio: https://ai.studio/apps/3f33603d-4867-496e-9dc6-a9dc61818443
+### 2. Možnosť A: Plná Natívna Inštalácia (16GB RAM a viac)
+*Priama inferencia pomocou knižníc `diffusers` bez proxy servera.*
+1. V súbore **local_server.py** do riadku 19 vložte Váš token, ktorý ste si vytvorli v kroku 1.
+2. V projekte nainštalujte Python závislosti: `pip install -r requirements.txt`
+3. Stiahnite váhy modelu FLUX.1 priamo cez skript (skript si stiahne cca 30GB dát).
+4. Spustite aplikáciu v režime natívnej integrácie.
 
-## Run Locally
+### 2. Možnosť B: Server Proxy (Menej ako 16GB RAM)
+*Optimalizované pre systémy s limitovanou pamäťou.*
+1. Otvorte terminál v priečinku a nainštalujte závislosti: `pip install -r ../requirements.txt`
+2. V súbore **server.py** do riadku 15 vložte Váš token, ktorý ste si vytvorli v kroku 1.
+3. V terminály spustite server: `python server.py`
+   - *Server pobeží na `http://127.0.0.1:5000`*
 
-**Prerequisites:**  Node.js
+### 3. Nastavenie Frontend-u (React)
+1. Otvorte nový terminál v priečinku. 
+2. V koreňovom adresári: `npm install`
+3. Spustite vývojový server: `npm run dev`
+4. Aplikácia je dostupná na `http://localhost:3000`.
+5. Gratulujem. Teraz môžete generovať bezšvové textúry na vašom zariadení.
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
