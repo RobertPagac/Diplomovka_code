@@ -1,0 +1,5 @@
+{
+  "name": "Seamless Texture Generator",
+  "description": "An AI-powered application to generate and preview high-quality, seamless tiling textures using Gemini's image generation models.",
+  "requestFramePermissions": []
+}
